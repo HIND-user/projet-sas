@@ -4,22 +4,22 @@ const condidats = [];
 function addcondidat (){
         let nom = p("entree le nom :");
         let prenom = p("entree le prenom :")
-        let age = p("entree le age :")
+        let age = Number(p("entree le age :"))
         let cin = p("entree le cin :")
         let partie_Politique = p("entree le partie_Politique :")
-        let vote = p("entree le vote :")
+        
         condidats.push({
             nom: nom,
             prenom: prenom,
             age: age,
             cin: cin,
             partie_politique: partie_Politique,
-            vote: vote,
+            vote:[]
 
         })
+        console.log("candidat bein ajouter")
     }
-
-
+do {
 console.log("1: Ajouter un nouveau candidat")
 console.log("2:Afficher la liste des candidats ");
 console.log("3: Voter pour un candidat");
@@ -31,7 +31,15 @@ let choix = Number(p("enter votre choix : "));
 
 switch (choix) {
     case 1 :
-        addcondidat()
+        addcondidat() 
+        break;
+    case 2 :
+    let nombre_de_condidat = Number(p("entrer le nombre de condidat :"))
+    for(let i = 1;i <= nombre_de_condidat.length;i++){
+         addcondidat() 
+    }
+   break;
+   case 3 : 
+   
 }
-
-console.log(condidats);
+}while(choix !==0);
