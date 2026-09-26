@@ -1,6 +1,6 @@
 const p = require('prompt-sync')()
 const condidats = [];
-let choix
+let choix ;
 
 function addcondidat (table){
     let objet = {}
@@ -44,44 +44,23 @@ function max_vote_condidat (condidats){
              }
               
 
+        } 
+
+
+        function filtrage(table){
+    let partie = p("entrer la partie politique :")
+    for(i=0; i<condidats.length; i++){
+        if( table.partie_Politique[i] === partie){
+            console.log("nom : " +table[i].nom)
+            console.log("prenom : " +table[i].prenom)
+            console.log("age : " +table[i].age)
+            console.log("cin : " +table[i].cin)
+            console.log("partie_politique : " +table[i].partie_politique)
+            console.log("nombre de vote : " +table[i].vote.length)
+
         }
-    
-
-
-
-do {
-console.log("1: Ajouter un nouveau candidat")
-console.log("2:Afficher la liste des candidats ");
-console.log("3: Voter pour un candidat");
-console.log("4:Modifier les informations d'un candidat");
-console.log("5: Supprimer un candidat");
-console.log("6: Rechercher des candidats :");
-console.log("7 : Statistiques de l'élection ");
-let choix = Number(p("enter votre choix : "));
-
-switch (choix) { 
-    case 1 :
-        addcondidat(condidats) 
-        console.log(condidats)
-        break;
-    case 2 :
-        liste_condidat ()
-    console.table(condidats)
-   break;
-   case 3 : 
-       
-
-
+    }
 }
-}while(choix !==0);
-    
-
-
-  
-
-
-
-
 
 
 function Afficher_liste_condidat (){
@@ -94,24 +73,48 @@ function Afficher_liste_condidat (){
           case 1 :
             liste_condidat()
             break;
-            case 2 :
+            case 2 : 
                 max_vote_condidat()
         console.log(max_vote_condidat);
         break;
                 case 3 :
-              
+                    filtrage(table)
+                    console.log(filtrage)
+              break;
+              default:
+                break;
 
         }
+     }while(affichier != 0)
+    
+    }
+do {
+console.log("1: Ajouter un nouveau candidat")
+console.log("2:Afficher la liste des candidats ");
+console.log("3: Voter pour un candidat");
+console.log("4:Modifier les informations d'un candidat");
+console.log("5: Supprimer un candidat");
+console.log("6: Rechercher des candidats :");
+console.log("7 : Statistiques de l'élection ");
+let choix = Number(p("enter votre choix : "));
 
-
-      }while(affichier != 0)
-}
-
-
-
-
-
+switch (choix) { 
+    case 1 :
+        addcondidat(tables) 
+        console.log(condidats)
+        break;
+    case 2 :
+        liste_condidat ()
+    console.table(condidats)
+   break;
+   case 3 :
+    Afficher_liste_condidat()
 
 
     
-    function filtrage(condidats)   
+
+       
+
+
+}
+}while(choix !==0);
