@@ -24,7 +24,28 @@ function addcondidat (table){
     }
 }
 
+function max_vote_condidat (condidats){
+            let maxvote = condidats.vote[0];
+            let maxindix =0;
+            for(i = 1 ; i < condidats.length ;i++){
+                if(maxvote < condidats.vote[i]){
+                    condidats.vote[i] = maxvote
+                    maxindix = i;
+                }
+            }
+             return maxindix;
+             function maxvote2 (condidats){
+                const newarr = [];
+                for(let i in condidats.vote){
+                    let maxvote = max_vote_condidat(condidats)
+                    console.log(condidats.splice(maxvote,i),condidats.vote)
+                }
+                 return newarr;
+             }
+              
 
+        }
+    
 
 
 
@@ -48,7 +69,7 @@ switch (choix) {
     console.table(condidats)
    break;
    case 3 : 
- 
+       
 
 
 }
@@ -74,10 +95,23 @@ function Afficher_liste_condidat (){
             liste_condidat()
             break;
             case 2 :
-
+                max_vote_condidat()
+        console.log(max_vote_condidat);
+        break;
+                case 3 :
+              
 
         }
 
 
       }while(affichier != 0)
 }
+
+
+
+
+
+
+
+    
+    function filtrage(condidats)   
