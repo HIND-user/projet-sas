@@ -17,7 +17,7 @@ function addcondidat (table){
         table.push(objet)
         console.log("candidat bein ajouter")
     }  
-        function liste_condidat (){
+        function liste_condidat (table){
     let nombre_de_condidat = Number(p("entrer le nombre de condidat :"))
     for(let i = nombre_de_condidat;i > 0;i--){
          addcondidat(condidats) 
@@ -71,10 +71,10 @@ function Afficher_liste_condidat (){
         let affichier = Number(p("entrer le choix :"));
         switch(affichier){
           case 1 :
-            liste_condidat()
+            liste_condidat(table)
             break;
             case 2 : 
-                max_vote_condidat()
+                max_vote_condidat(table)
         console.log(max_vote_condidat);
         break;
                 case 3 :
@@ -88,6 +88,38 @@ function Afficher_liste_condidat (){
      }while(affichier != 0)
     
     }
+
+
+
+
+
+function voter_pour_un_condidat (table){
+     let cin_electeur = p("entrer votre CIN :")
+     for (let i = 0; i < table.length-1; i++) {
+      for (let j = i+1; j < table[i].vote.length; j++) {
+        if (cin_electeur == table[i].vote[j]) {
+            console.log("impossible de voter (cin repeter")
+            return
+        }
+      }         
+    } 
+    let bool = true
+    let cin_candidat = p("entrer le cin de candidat que vous vouler le voter :")
+    for (let i = 0; i < table.length; i++) {
+        if (cin_candidat == table[i].cin) {
+            table[i].vote.push(cin_electeur)
+        }   
+    }
+    if( bool = false){
+        console.log("impossible")
+    }
+    }
+      
+
+
+
+
+
 do {
 console.log("1: Ajouter un nouveau candidat")
 console.log("2:Afficher la liste des candidats ");
@@ -100,17 +132,21 @@ let choix = Number(p("enter votre choix : "));
 
 switch (choix) { 
     case 1 :
-        addcondidat(tables) 
+        addcondidat(condidats) 
         console.log(condidats)
         break;
     case 2 :
-        liste_condidat ()
+        liste_condidat (condidats)
     console.table(condidats)
    break;
    case 3 :
-    Afficher_liste_condidat()
-
-
+    Afficher_liste_condidat(condidats) 
+        
+    break;
+    case 4 :
+      voter_pour_un_condidat(condidats)
+    break ;
+    
     
 
        
@@ -118,3 +154,7 @@ switch (choix) {
 
 }
 }while(choix !==0);
+     
+
+
+      
