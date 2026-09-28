@@ -17,80 +17,71 @@ function addcondidat (table){
         table.push(objet)
         console.log("candidat bein ajouter")
     }  
-        function liste_condidat (table){
-    let nombre_de_condidat = Number(p("entrer le nombre de condidat :"))
-    for(let i = nombre_de_condidat;i > 0;i--){
-         addcondidat(condidats) 
-    }
-}
-
-function max_vote_condidat (condidats){
-            let maxvote = condidats.vote[0];
-            let maxindix =0;
-            for(i = 1 ; i < condidats.length ;i++){
-                if(maxvote < condidats.vote[i]){
-                    condidats.vote[i] = maxvote
-                    maxindix = i;
-                }
-            }
-             return maxindix;
-             function maxvote2 (condidats){
-                const newarr = [];
-                for(let i in condidats.vote){
-                    let maxvote = max_vote_condidat(condidats)
-                    console.log(condidats.splice(maxvote,i),condidats.vote)
-                }
-                 return newarr;
-             }
-              
-
-        } 
-
-
-        function filtrage(table){
-    let partie = p("entrer la partie politique :")
-    for(i=0; i<condidats.length; i++){
-        if( table.partie_Politique[i] === partie){
-            console.log("nom : " +table[i].nom)
-            console.log("prenom : " +table[i].prenom)
-            console.log("age : " +table[i].age)
-            console.log("cin : " +table[i].cin)
-            console.log("partie_politique : " +table[i].partie_politique)
-            console.log("nombre de vote : " +table[i].vote.length)
-
-        }
-    }
-}
-
-
-function Afficher_liste_condidat (){
-      do {
-        console.log(p("1:aficher la liste avec tout details :"))
-        console.log(p("2:tries les condidats par nombre de vote :"))
-        console.log(p("3:filtrer et afficher uniquement les condidats d'un partie politique specifique"))
-        let affichier = Number(p("entrer le choix :"));
-        switch(affichier){
-          case 1 :
-            liste_condidat(table)
-            break;
-            case 2 : 
-                max_vote_condidat(table)
-        console.log(max_vote_condidat);
-        break;
-                case 3 :
-                    filtrage(table)
-                    console.log(filtrage)
-              break;
-              default:
-                break;
-
-        }
-     }while(affichier != 0)
+        function liste_condidat(table){
+   console.log("----------------------------------")
+   console.log("--------liste de candidates-------")
+   console.log("----------------------------------")
+   for (let i = 0; i < table.length; i++) {
+    console.log(`Candidature : ${i+1}`)
+    console.log("Cin : " + table[i].cin)
+    console.log("Name : " + table[i].nom)
+    console.log("prenom : " +table[i].prenom)
+    console.log("Age : " +table[i].age)
+    console.log("Partie Politique : " +table[i].partiepolitique)
+    console.log("_____________________________________________")
     
-    }
+   }
+}
+function tri_filtre(table) {
+    console.log("1. pour tri le classement de candidats de plus vote : ")
+    console.log("2. pour filtrer les candidates selon le partie politique : ")
+    let trietflitre = Number(p("entrer votre chois :"))
+    switch (trietflitre) {
+        case 1:
+           for (let i = 0; i < table.length - 1; i++) {
+            for (let j = i + 1; j < table[i].vote.length; j++) {
+                let max
+             if (table[i].vote.length < table[j].vote.length) {
+                max = table[i]
+                table[i]= table[j]
+                table[j] = max
+             }
+               
+            }
+        
+           console.log("nom :" +table[i].nom)
+           console.log("prenom :" +table[i].prenom)
+           console.log("cin:" +table[i].cin)
+           console.log("age :" +table[i].age)
+           console.log("partie politique :" +table[i].partiepolitique)
+           console.log("______________________________")
+        }
+            break;
+            case 2: 
+            
+            let pt = p("Enter partiepolitique : ")
+             for(i = 0 ;i<table[i].length -1;i++){
+                for(j=i+1;j<table[i].partiepolitique.length;j++){
+                   if(table[i].partiepolitique = pt){
+             console.log("nom :"+table[i].nom)
+             console.log("prenom :"+table[i].prenom)
+             console.log("cin:"+table[i].cin)
+             console.log("age :"+table[i].age)
+             console.log("partie politique :"+table[i].partiepolitique)
+             console.log("nombre de vote : " +table[i].vote.length)
+             console.log("******************************")
+             break;
 
-
-
+             }
+             }
+             
+            
+            }
+        
+        default :
+            console.log(p("partie politique incorect entrer un autre partie politique :"))
+  }  
+}
 
 
 function voter_pour_un_condidat (table){
@@ -116,45 +107,121 @@ function voter_pour_un_condidat (table){
     }
       
 
+function modifierinformationcondidat(table){
+    
+    console.log("1:pour modifier la partie politique : ")
+    console.log("2:pour modifier l'age : ")
+ let modifier = p("entrer votre choix : ")
+    switch(modifier){
+        case 1 :
+         let cincin = p("entrer votre cin :")
+         let modification_partie = p("entrer la modification :")
+         for (let i = 0; i < table.length; i++) {
+            if (cincin == table[i].cin) {
+            table[i].partiepolitique == modification_partie
+            }else{
+                console.log("cin introuvable")
+                return
+            }  
+       } 
+        break;
+        case 2 :
+            let cinn = p("entrer votre cin : ")
+            let modification_age = p("entrer la modification : ")
+            for (let i = 0; i < table.length; i++) {
+                if(cinn == table[i].cin){
+                    table[i].age == age
+                }else{
+                    console.log("cin introuvable")
+                }
+                
+            }
+    }
+      
+}
+  
+
+function Supprimeruncondidat(table){
+       let Supprimercondidat=p("entrer votre cin")
+       for(i = 0;i<table.length ;i++){
+        if(Supprimercondidat == table[i].cin){
+            table.splice(1,i)        }
+ 
+       }
+    }
+   
+function rechercheuncondidat(table){
+       let nomcondidat =p("entrer le nom de condidats")
+       for (let i = 0; i < table.length; i++ ){
+        if(nomcondidat == table[i].nom){
+            console.log("----------------------------------")
+   console.log("--------liste de candidates-------")
+   console.log("----------------------------------")
+   for (let i = 0; i < table.length; i++) {
+    console.log(`Candidature : ${i+1}`)
+    console.log("Cin : " + table[i].cin)
+    console.log("Name : " + table[i].nom)
+    console.log("prenom : " +table[i].prenom)
+    console.log("Age : " +table[i].age)
+    console.log("Partie Politique : " +table[i].partiepolitique)
+    console.log("_____________________________________________")
+            
 
 
+        }
+
+    }
+}
+
+}
+function Statistiques(table){
+
+
+}
 
 
 do {
+console.log("____________liste de chois____________")
+console.log("")
 console.log("1: Ajouter un nouveau candidat")
 console.log("2:Afficher la liste des candidats ");
-console.log("3: Voter pour un candidat");
-console.log("4:Modifier les informations d'un candidat");
-console.log("5: Supprimer un candidat");
-console.log("6: Rechercher des candidats :");
-console.log("7 : Statistiques de l'élection ");
-let choix = Number(p("enter votre choix : "));
+console.log("3. tri et filtre :")
+console.log("4: Voter pour un candidat");
+console.log("5:Modifier les informations d'un candidat");
+console.log("6: Supprimer un candidat");
+console.log("7: Rechercher des candidats :");
+console.log("8 : Statistiques de l'élection ");
+choix = Number(p("enter votre choix : "));
 
 switch (choix) { 
     case 1 :
-        addcondidat(condidats) 
-        console.log(condidats)
+    console.clear()    
+    addcondidat(condidats) 
+        console.log("ajout complete")
         break;
     case 2 :
-        liste_condidat (condidats)
-    console.table(condidats)
+        liste_condidat(condidats)
+
    break;
    case 3 :
-    Afficher_liste_condidat(condidats) 
-        
+        tri_filtre(condidats)
     break;
     case 4 :
       voter_pour_un_condidat(condidats)
     break ;
-    
-    
+    case 5 :
+    modifierinformationcondidat(condidats)
+    break;
+    case 6 :
+      Supprimeruncondidat(condidats)
+      console.log("condidat supprimer")
+      break;
+      case 7 :
+       rechercheuncondidat(condidats)
 
        
 
 
 }
-}while(choix !==0);
-     
+}while(choix != 0);
 
-
-      
