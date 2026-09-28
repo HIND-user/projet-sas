@@ -8,6 +8,13 @@ function addcondidat (table){
         let prenom = p("entree le prenom :")
         let age = Number(p("entree le age :"))
         let cin = p("entree le cin :")
+        for (let i = 0; i < table.length; i++) {
+            if (cin == table[i].cin) {
+                console.log("impossible")
+                return
+            }
+            
+        }
         let partie_Politique = p("entree le partie_Politique :")
         objet.nom = nom
         objet.prenom = prenom
@@ -39,7 +46,7 @@ function tri_filtre(table) {
     switch (trietflitre) {
         case 1:
            for (let i = 0; i < table.length - 1; i++) {
-            for (let j = i + 1; j < table[i].vote.length; j++) {
+            for (let j = i + 1; j < table[i].length; j++) {
                 let max
              if (table[i].vote.length < table[j].vote.length) {
                 max = table[i]
@@ -47,15 +54,19 @@ function tri_filtre(table) {
                 table[j] = max
              }
                
-            }
+            }}
         
-           console.log("nom :" +table[i].nom)
+         for(let i = 0; i < table.length ; i++) { 
+          console.log("# candidature : " +(i+1))
+            console.log("nom :" +table[i].nom)
            console.log("prenom :" +table[i].prenom)
            console.log("cin:" +table[i].cin)
            console.log("age :" +table[i].age)
            console.log("partie politique :" +table[i].partiepolitique)
+           console.log("numero de vote : " + table[i].vote.length)
            console.log("______________________________")
         }
+        
             break;
             case 2: 
             
@@ -175,6 +186,10 @@ function rechercheuncondidat(table){
 
 }
 function Statistiques(table){
+    let sommmecondidat ;
+    for(i=0;i<table.length;i++){
+     
+    }
 
 
 }
@@ -197,16 +212,18 @@ switch (choix) {
     case 1 :
     console.clear()    
     addcondidat(condidats) 
-        console.log("ajout complete")
         break;
     case 2 :
+        console.clear()
         liste_condidat(condidats)
 
    break;
    case 3 :
+    console.clear()
         tri_filtre(condidats)
     break;
     case 4 :
+        console.clear()
       voter_pour_un_condidat(condidats)
     break ;
     case 5 :
