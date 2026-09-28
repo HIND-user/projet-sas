@@ -1,5 +1,55 @@
 const p = require('prompt-sync')()
-const condidats = [];
+const condidats = [
+    {
+        cin: "AB123456",
+        nom: "Boushaba",
+        prenom: "Soufiane",
+        partiPolitique: "Indépendant",
+        age: 40,
+        vote: ["CD111111", "EF222222", "GH333333"]
+    },
+    {
+        cin: "AB234567",
+        nom: "Alaoui",
+        prenom: "Yassine",
+        partiPolitique: "Parti de la Justice",
+        age: 35,
+        vote: ["IJ444444", "KL555555"]
+    },
+    {
+        cin: "AB345678",
+        nom: "Benali",
+        prenom: "Sara",
+        partiPolitique: "Parti de la Justice",
+        age: 29,
+        vote: ["MN666666", "OP777777", "QR888888", "ST999999"]
+    },
+    {
+        cin: "AB456789",
+        nom: "El Amrani",
+        prenom: "Hamza",
+        partiPolitique: "Parti du Développement",
+        age: 45,
+        vote: ["UV111222"]
+    },
+    {
+        cin: "AB567890",
+        nom: "Chakir",
+        prenom: "Imane",
+        partiPolitique: "Indépendant",
+        age: 32,
+        vote: []
+    },
+    {
+        cin: "AB678901",
+        nom: "Idrissi",
+        prenom: "Omar",
+        partiPolitique: "Parti du Développement",
+        age: 51,
+        vote: ["WX333444", "YZ555666"]
+    }
+];
+
 let choix ;
 
 function addcondidat (table){
@@ -21,6 +71,7 @@ function addcondidat (table){
         objet.age = age
         objet.cin = cin
         objet.partiepolitique = partie_Politique
+        objet.vote =[]
         table.push(objet)
         console.log("candidat bein ajouter")
     }  
@@ -45,8 +96,8 @@ function tri_filtre(table) {
     let trietflitre = Number(p("entrer votre chois :"))
     switch (trietflitre) {
         case 1:
-           for (let i = 0; i < table.length - 1; i++) {
-            for (let j = i + 1; j < table[i].length; j++) {
+           for (let i = 0; i < table.length; i++) {
+            for (let j = i + 1; j < table.length; j++) {
                 let max
              if (table[i].vote.length < table[j].vote.length) {
                 max = table[i]
