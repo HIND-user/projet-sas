@@ -1,53 +1,32 @@
 const p = require('prompt-sync')()
-const condidats = [
-    {
-        cin: "AB123456",
-        nom: "Boushaba",
-        prenom: "Soufiane",
-        partiPolitique: "Indépendant",
-        age: 40,
-        vote: ["CD111111", "EF222222", "GH333333"]
+const condidats=[{ cin : "AA123456",
+    nom : "name1",
+    prenom : "name1",
+    partiepolitique : "IND",
+    age: 40,
+    vote: ["e1","e2","e3","e4","e5"]
     },
-    {
-        cin: "AB234567",
-        nom: "Alaoui",
-        prenom: "Yassine",
-        partiPolitique: "Parti de la Justice",
-        age: 35,
-        vote: ["IJ444444", "KL555555"]
+    { cin : "AB123456",
+    nom : "name2",
+    prenom : "name2",
+    partiepolitique : "PAM",
+    age: 40,
+    vote: ["e6","e7","e8","e9"]
     },
-    {
-        cin: "AB345678",
-        nom: "Benali",
-        prenom: "Sara",
-        partiPolitique: "Parti de la Justice",
-        age: 29,
-        vote: ["MN666666", "OP777777", "QR888888", "ST999999"]
+      { cin : "AC123456",
+    nom : "name3",
+    prenom : "name3",
+    partiepolitique : "IND",
+    age: 40,
+    vote: ["e10","e11","e12","e13","e14","e15","e16"]
     },
-    {
-        cin: "AB456789",
-        nom: "El Amrani",
-        prenom: "Hamza",
-        partiPolitique: "Parti du Développement",
-        age: 45,
-        vote: ["UV111222"]
-    },
-    {
-        cin: "AB567890",
-        nom: "Chakir",
-        prenom: "Imane",
-        partiPolitique: "Indépendant",
-        age: 32,
-        vote: []
-    },
-    {
-        cin: "AB678901",
-        nom: "Idrissi",
-        prenom: "Omar",
-        partiPolitique: "Parti du Développement",
-        age: 51,
-        vote: ["WX333444", "YZ555666"]
-    }
+        { cin : "AD123456",
+    nom : "name4",
+    prenom : "name4",
+    partiepolitique : "PAM",
+    age: 40,
+    vote: ["e17","e18"]
+    } 
 ];
 
 let choix ;
@@ -86,6 +65,7 @@ function addcondidat (table){
     console.log("prenom : " +table[i].prenom)
     console.log("Age : " +table[i].age)
     console.log("Partie Politique : " +table[i].partiepolitique)
+    console.log("votes: " + table[i].vote.length)
     console.log("_____________________________________________")
     
    }
@@ -96,53 +76,47 @@ function tri_filtre(table) {
     let trietflitre = Number(p("entrer votre chois :"))
     switch (trietflitre) {
         case 1:
-           for (let i = 0; i < table.length; i++) {
-            for (let j = i + 1; j < table.length; j++) {
-                let max
-             if (table[i].vote.length < table[j].vote.length) {
-                max = table[i]
-                table[i]= table[j]
-                table[j] = max
-             }
+            for (let i = 0; i < table.length - 1; i++) {
+                for (let j = i + 1; j < table.length; j++) {
+                    let max
+                    if (table[i].vote.length < table[j].vote.length) {
+                        max = table[i]
+                        table[i]= table[j]
+                        table[j] = max
+                    }
                
-            }}
-        
-         for(let i = 0; i < table.length ; i++) { 
-          console.log("# candidature : " +(i+1))
-            console.log("nom :" +table[i].nom)
-           console.log("prenom :" +table[i].prenom)
-           console.log("cin:" +table[i].cin)
-           console.log("age :" +table[i].age)
-           console.log("partie politique :" +table[i].partiepolitique)
-           console.log("numero de vote : " + table[i].vote.length)
-           console.log("______________________________")
-        }
-        
-            break;
-            case 2: 
-            
-            let pt = p("Enter partiepolitique : ")
-             for(i = 0 ;i<table[i].length -1;i++){
-                for(j=i+1;j<table[i].partiepolitique.length;j++){
-                   if(table[i].partiepolitique = pt){
-             console.log("nom :"+table[i].nom)
-             console.log("prenom :"+table[i].prenom)
-             console.log("cin:"+table[i].cin)
-             console.log("age :"+table[i].age)
-             console.log("partie politique :"+table[i].partiepolitique)
-             console.log("nombre de vote : " +table[i].vote.length)
-             console.log("******************************")
-             break;
-
-             }
-             }
-             
-            
+                }
             }
         
+            for(let i = 0; i < table.length ; i++) { 
+                console.log("# candidature : " +(i+1))
+                console.log("nom :" +table[i].nom)
+                console.log("prenom :" +table[i].prenom)
+                console.log("cin:" +table[i].cin)
+                console.log("age :" +table[i].age)
+                console.log("partie politique :" +table[i].partiepolitique)
+                console.log("numero de vote : " + table[i].vote.length)
+                console.log("______________________________")
+            }
+            break;
+           
+        case 2: 
+            let pt = p("Enter partiepolitique : ")
+            for(let i = 0; i<table.length;i++){
+                    if(table[i].partiepolitique == pt){
+                        console.log("nom : "+table[i].nom)
+                        console.log("prenom : "+table[i].prenom)
+                        console.log("cin: "+table[i].cin)
+                        console.log("age : "+table[i].age)
+                        console.log("partie politique :"+table[i].partiepolitique)
+                        console.log("nombre de vote : " +table[i].vote.length)
+                        console.log("******************************")
+                    }
+            }
+            break;
         default :
             console.log(p("partie politique incorect entrer un autre partie politique :"))
-  }  
+    }  
 }
 
 
@@ -183,7 +157,6 @@ function modifierinformationcondidat(table){
             table[i].partiepolitique == modification_partie
             }else{
                 console.log("cin introuvable")
-                return
             }  
        } 
         break;
@@ -236,14 +209,14 @@ function rechercheuncondidat(table){
 }
 
 }
-function Statistiques(table){
-    let sommmecondidat ;
+  function statistique(table){
+    let sommecandidat=0;
     for(i=0;i<table.length;i++){
-     
+        sommecandidat=sommecondidat+i
+
     }
-
-
-}
+    console.log(sommecandidat)
+  }
 
 
 do {
@@ -268,11 +241,11 @@ switch (choix) {
         console.clear()
         liste_condidat(condidats)
 
-   break;
+        break;
    case 3 :
-    console.clear()
+        console.clear()
         tri_filtre(condidats)
-    break;
+        break;
     case 4 :
         console.clear()
       voter_pour_un_condidat(condidats)
@@ -286,7 +259,9 @@ switch (choix) {
       break;
       case 7 :
        rechercheuncondidat(condidats)
-
+        break;
+        case 8 :
+            statistique()
        
 
 
