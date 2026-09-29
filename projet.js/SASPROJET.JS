@@ -1,32 +1,5 @@
 const p = require('prompt-sync')()
-const condidats=[{ cin : "AA123456",
-    nom : "name1",
-    prenom : "name1",
-    partiepolitique : "IND",
-    age: 40,
-    vote: ["e1","e2","e3","e4","e5"]
-    },
-    { cin : "AB123456",
-    nom : "name2",
-    prenom : "name2",
-    partiepolitique : "PAM",
-    age: 40,
-    vote: ["e6","e7","e8","e9"]
-    },
-      { cin : "AC123456",
-    nom : "name3",
-    prenom : "name3",
-    partiepolitique : "IND",
-    age: 40,
-    vote: ["e10","e11","e12","e13","e14","e15","e16"]
-    },
-        { cin : "AD123456",
-    nom : "name4",
-    prenom : "name4",
-    partiepolitique : "PAM",
-    age: 40,
-    vote: ["e17","e18"]
-    } 
+const condidats=[
 ];
 
 let choix ;
@@ -70,7 +43,7 @@ function addcondidat (table){
     
    }
 }
-function tri_filtre(table) {
+function tri_filtre(condidats) {
     console.log("1. pour tri le classement de candidats de plus vote : ")
     console.log("2. pour filtrer les candidates selon le partie politique : ")
     let trietflitre = Number(p("entrer votre chois :"))
@@ -82,7 +55,7 @@ function tri_filtre(table) {
                     if (table[i].vote.length < table[j].vote.length) {
                         max = table[i]
                         table[i]= table[j]
-                        table[j] = max
+                        table[j] = maxj
                     }
                
                 }
@@ -209,16 +182,6 @@ function rechercheuncondidat(table){
 }
 
 }
-  function statistique(table){
-    let sommecandidat=0;
-    for(i=0;i<table.length;i++){
-        sommecandidat=sommecondidat+i
-
-    }
-    console.log(sommecandidat)
-  }
-
-
 do {
 console.log("____________liste de chois____________")
 console.log("")
@@ -261,10 +224,24 @@ switch (choix) {
        rechercheuncondidat(condidats)
         break;
         case 8 :
-            statistique()
+            Statistiques()
+            break
        
 
 
 }
 }while(choix != 0);
 
+function Statistiques(){
+console.log("1: pour affichier le nombre total de condidat :")
+console.log("2: le nombre total de vote exist :")
+    let statique = Number(p("entrer votre choix :"))
+   switch(statique){
+    case 1 :
+        console.log(condidats.length)
+      break;
+     case 2 :
+     let tota
+     break;
+   }
+}
